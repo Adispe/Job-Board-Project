@@ -1,0 +1,161 @@
+<div>
+  <div class="submit-form">
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="name">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          [(ngModel)]="form.name"
+          required
+          minlength="10"
+          maxlength="70"
+          #name="ngModel"
+        />
+      </div>
+      <div class="alert-danger" *ngIf="name.errors && f.submitted">
+        <div *ngIf="name.errors.required">Title is required</div>
+        <div *ngIf="name.errors.minlength">
+          Title must be at least 10 characters
+        </div>
+        <div *ngIf="name.errors.maxlength">
+          Title must be at most 70 characters
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="short_description">Short description</label>
+        <textarea
+          type="text"
+          class="form-control"
+          name="short_description"
+          [(ngModel)]="form.short_description"
+          required
+          name="short_description"
+          minlength="15"
+          maxlength="120"
+          #short_description="ngModel"
+        ></textarea>
+      </div>
+      <div class="alert-danger" *ngIf="short_description.errors && f.submitted">
+        <div *ngIf="short_description.errors.required">
+          Short description is required
+        </div>
+        <div *ngIf="short_description.errors.minlength">
+          Short description must be at least 15 characters
+        </div>
+        <div *ngIf="short_description.errors.maxlength">
+          Short description must be at most 120 characters
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="full_description">Full description</label>
+        <textarea
+          type="text"
+          class="form-control"
+          name="full_description"
+          required
+          [(ngModel)]="form.full_description"
+          minlength="20"
+          maxlength="250"
+          #full_description="ngModel"
+        ></textarea>
+      </div>
+      <div class="alert-danger" *ngIf="full_description.errors && f.submitted">
+        <div *ngIf="full_description.errors.required">
+          Full description is required
+        </div>
+        <div *ngIf="full_description.errors.minlength">
+          Full description must be at least 20 characters
+        </div>
+        <div *ngIf="full_description.errors.maxlength">
+          Full description must be at most 250 characters
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="localisation">Localisation</label>
+        <input
+          type="text"
+          class="form-control"
+          name="localisation"
+          id="localisation"
+          required
+          [(ngModel)]="form.localisation"
+          minlength="2"
+          maxlength="50"
+          #localisation="ngModel"
+        />
+      </div>
+      <div class="alert-danger" *ngIf="localisation.errors && f.submitted">
+        <div *ngIf="localisation.errors.required">Localisation is required</div>
+        <div *ngIf="localisation.errors.minlength">
+          Localisation must be at least 2 characters
+        </div>
+        <div *ngIf="localisation.errors.maxlength">
+          Localisation must be at most 50 characters
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="contract">Contract</label>
+        <input
+          type="text"
+          class="form-control"
+          name="contract"
+          required
+          [(ngModel)]="form.contract"
+          minlength="2"
+          maxlength="30"
+          #contract="ngModel"
+        />
+      </div>
+      <div class="alert-danger" *ngIf="contract.errors && f.submitted">
+        <div *ngIf="contract.errors.required">Contract is required</div>
+        <div *ngIf="contract.errors.minlength">
+          Localisation must be at least 2 characters
+        </div>
+        <div *ngIf="contract.errors.maxlength">
+          Localisation must be at most 30 characters
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="company">Company</label>
+        <input
+          type="text"
+          class="form-control"
+          name="company"
+          [(ngModel)]="form.company"
+          required
+          minlength="2"
+          maxlength="70"
+          #company="ngModel"
+        />
+      </div>
+      <div class="alert-danger" *ngIf="company.errors && f.submitted">
+        <div *ngIf="company.errors.required">Company is required</div>
+        <div *ngIf="company.errors.minlength">
+          Company must be at least 10 characters
+        </div>
+        <div *ngIf="company.errors.maxlength">
+          Company must be at most 30 characters
+        </div>
+      </div>
+
+      <input type="submit" class="btn btn-success" value="Submit" />
+    </form>
+
+    <div *ngIf="submitted">
+      <h4>Job advertisement was submitted successfully!</h4>
+    </div>
+  </div>
+</div>

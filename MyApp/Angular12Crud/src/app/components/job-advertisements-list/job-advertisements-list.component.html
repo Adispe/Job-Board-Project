@@ -1,0 +1,95 @@
+<div>
+  <div class="col-md-8"></div>
+  <div class="col-md-6">
+    <h4>Job List</h4>
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by name"
+        [(ngModel)]="name"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchTitle()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <ul class="list-group">
+      <li
+        class="job-advertisement-list"
+        *ngFor="let job_advertisement of job_advertisements; let i = index"
+        [class.active]="i == currentIndex"
+      >
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">{{ job_advertisement.name }}</h3>
+            <p class="card-text">
+              {{ job_advertisement.short_description }}
+            </p>
+            <a
+              *ngIf="job_advertisement != currentJob"
+              class="btn btn-primary"
+              [class.selected]="job_advertisement === currentJob"
+              (click)="setActiveJobAdvertisement(job_advertisement, i)"
+              >Learn more</a
+            >
+            <div
+              *ngIf="currentJob.id && job_advertisement == currentJob"
+              class="text-dark"
+            >
+              <div>
+                <label><strong>Full job description:</strong></label>
+                {{ currentJob.full_description }}
+              </div>
+              <div>
+                <label><strong>Company:</strong></label>
+                {{ currentJob.company }}
+              </div>
+              <div>
+                <label><strong>Geographic location:</strong></label>
+                {{ currentJob.localisation }}
+              </div>
+              <div>
+                <label><strong>Type of Contract:</strong></label>
+                {{ currentJob.contract }}
+              </div>
+
+              <div class="row justify-content-between">
+                <div class="col-6">
+                  <a class="btn btn-success" (click)="applyJobAdvertisement()">
+                    Apply
+                  </a>
+                </div>
+                <div *ngIf="isAdmin" class="col-2">
+                  <button
+                    class="badge badge-warning"
+                    routerLink="/job_advertisement/{{ currentJob.id }}"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    class="badge badge-danger"
+                    (click)="deleteJobAdvertisement()"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <!-- <button class="m-3 btn btn-sm btn-danger" (click)="removeAllJobAdvertisements()">
+      Remove All
+    </button> -->
+  </div>
+</div>

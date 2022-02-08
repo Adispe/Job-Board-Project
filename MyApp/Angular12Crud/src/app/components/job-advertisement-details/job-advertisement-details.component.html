@@ -1,0 +1,69 @@
+<div>
+  <div *ngIf="currentJob.id" class="edit-form">
+    <h4>Job Advertisement</h4>
+    <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          [(ngModel)]="currentJob.name"
+          name="name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="short_description">Short description</label>
+        <input
+          type="text"
+          class="form-control"
+          id="short_description"
+          [(ngModel)]="currentJob.short_description"
+          name="short_description"
+        />
+      </div>
+
+      <div class="form-group">
+        <label><strong>Status:</strong></label>
+        {{ currentJob.published ? "Published" : "Pending" }}
+      </div>
+    </form>
+
+    <button
+      class="badge badge-primary mr-2"
+      *ngIf="currentJob.published"
+      (click)="updatePublished(false)"
+    >
+      UnPublish
+    </button>
+    <button
+      *ngIf="!currentJob.published"
+      class="badge badge-primary mr-2"
+      (click)="updatePublished(true)"
+    >
+      Publish
+    </button>
+
+    <button class="badge badge-danger mr-2" (click)="deleteJobAdvertisement()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateJobAdvertisement()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentJob.id && !showDeleted">
+    <br />
+    <p>Cannot access this Job advertisement...</p>
+  </div>
+  <div *ngIf="!currentJob.id && showDeleted">
+    <br />
+    <p>Job advertisement deleted successfully !</p>
+  </div>
+</div>
