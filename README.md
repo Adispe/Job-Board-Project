@@ -87,9 +87,7 @@ In this "readme" you will find documentation concerning project, as technical in
 ### Installation
 
 1. Clone the repository
-   ```sh
-   git clone https://github.com/EpitechMscProPromo2024/T-WEB-501-TLS-5-1-jobboard-antonin.disperati.git
-   ```
+
 2. Install NPM packages
    ```sh
    npm install
@@ -117,10 +115,6 @@ In this "readme" you will find documentation concerning project, as technical in
 <!-- CONTACT -->
 ## Contact
 
-Yves Molina - yves.molina@epitech.eu
-
 Antonin DISPERATI - antonin.disperati@epitech.eu
-
-Project Link: [https://github.com/EpitechMscProPromo2024/T-WEB-501-TLS-5-1-jobboard-antonin.disperati](https://github.com/EpitechMscProPromo2024/T-WEB-501-TLS-5-1-jobboard-antonin.disperati)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
